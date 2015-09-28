@@ -13,18 +13,15 @@ var getElementsByClassName = function(className) {
     var i = 0;
     var classList;
 
-    if(!length) {
-      return;
-    }
-
     for(; i < length; ++i) {
-      classList = [].slice.call(children[i].classList);
 
-      if( classList.indexOf(className) !== -1 ) {
+      if( children[i].classList.contains(className) ) {
         nodeList.push(children[i]);
       }
-      
-      childLoop(children[i]);
+
+      if( children[i].children.length ) {
+        childLoop(children[i]);
+      }
     }
   };
 
